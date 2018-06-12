@@ -15,16 +15,26 @@ public class Player {
 	public Player(String name)
 	{
 		_name = name;
+		_hand = new ArrayList<Card>();
 	}
 	
 	public void addCardToHand(Card card)
 	{
+		System.out.println("[" + _name + "] Adding " + card.toString() + " to hand");
 		_hand.add(card);
+		
 	}
 	
 	public Card playCard()
 	{
 		return null;
+	}
+	
+	public int placeBet()
+	{
+		System.out.println("[" + _name + "] Placing bet: 4");
+		return 4;
+		
 	}
 	
 }
