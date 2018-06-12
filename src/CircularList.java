@@ -13,6 +13,12 @@ public class CircularList<Type> implements Iterable<Type> {
 	private Type[] arrayList;
 	private int currentSize;
 	
+	public CircularList(Type[] newArray)
+	{
+		this.arrayList = newArray;
+		this.currentSize = arrayList.length;
+	}
+	
 	@Override
 	public Iterator<Type> iterator()
 	{

@@ -22,10 +22,9 @@ public class Player {
 	{
 		System.out.println("[" + _name + "] Adding " + card.toString() + " to hand");
 		_hand.add(card);
-		
 	}
 	
-	public Card playCard()
+	public Action playRound()
 	{
 		return null;
 	}

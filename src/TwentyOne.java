@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class TwentyOne {
 
 	private ArrayList<Player> _players;
+	private CircularList<Player> _playersRound;
 	private Deck _deck;
 	
 	private boolean gameHasEnded = false;
@@ -35,10 +37,11 @@ public class TwentyOne {
 	
 	public void playGame()
 	{
-		
+		Iterator<Player> turnIterator = _playersRound.iterator();
 		while(!gameHasEnded)
 		{
-			
+			Player playerAtTurn = turnIterator.next();
+			playerAtTurn.playRound();
 		}
 	}
 	
