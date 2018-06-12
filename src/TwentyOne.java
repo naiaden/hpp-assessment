@@ -1,5 +1,8 @@
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import javax.swing.event.EventListenerList;
 
 public class TwentyOne {
 
@@ -14,6 +17,7 @@ public class TwentyOne {
 		if(_players.size() < 4)
 		{
 			_players.add(player);
+			addPublicActionEventListener(player.getPublicActionEventListener());
 			System.out.println("Player " + player._name + " added");
 			return true;
 		}
@@ -55,12 +59,40 @@ public class TwentyOne {
 				break;
 			case HIT:
 				// deal player a new card
+				playerAtTurn.addCardToHand(_deck.dealCard());
 				break;
 			case STAND:
 				// hold your total and end your turn
+				// do nothing
+				break;
 			default:
 				break;
 			}
+			
+			firePublicActionEvent(new PublicActionEvent(this, playerAtTurn, playerAction));
+			
+			
+		}
+	}
+	
+	protected ArrayList<PublicActionEventListener> publicActionEventListeners = new ArrayList<PublicActionEventListener>();
+	
+	public void addPublicActionEventListener(PublicActionEventListener listener)
+	{
+		publicActionEventListeners.add(listener);
+	}
+	
+	public void removePublicActionEventListener(PublicActionEventListener listener)
+	{
+		publicActionEventListeners.remove(listener);
+		
+	}
+	
+	public void firePublicActionEvent(PublicActionEvent pae)
+	{
+		for (PublicActionEventListener pael : publicActionEventListeners)
+		{
+			pael.publicActionEventOccurred(pae);
 		}
 	}
 	

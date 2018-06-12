@@ -1,6 +1,11 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.EventListener;
+
+import javax.swing.event.EventListenerList;
 
 /**
  * 
@@ -10,8 +15,11 @@ import java.io.InputStreamReader;
  * @author louis
  *
  */
-public class PlayerCLI extends Player {
+public class PlayerCLI extends Player 
+{
 
+	
+	
 	public PlayerCLI(String name) {
 		super(name);
 	}
@@ -48,7 +56,22 @@ public class PlayerCLI extends Player {
 		}
 		
 	}
+
+	@Override
+	public void publicActionEventOccurred(PublicActionEvent pae) {
+		System.err.println("???);
+		
+	}
+	
+
+	
+	
+	
+		//
+
 	
 	
 
 }
+
+
