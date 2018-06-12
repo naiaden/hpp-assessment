@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author louis
  *
  */
-public class Player {
+public abstract class Player {
 	private ArrayList<Card> _hand;
 	public final String _name;
 	
@@ -24,16 +24,8 @@ public class Player {
 		_hand.add(card);
 	}
 	
-	public Action playRound()
-	{
-		return null;
-	}
+	abstract public Action playRound();
 	
-	public int placeBet()
-	{
-		System.out.println("[" + _name + "] Placing bet: 4");
-		return 4;
-		
-	}
+	abstract public int placeBet();
 	
 }

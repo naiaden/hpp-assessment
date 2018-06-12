@@ -32,16 +32,35 @@ public class TwentyOne {
 		_deck.shuffle();
 		System.out.println("New deck shuffled with " + _deck.size() + " cards");
 		
-		playGame();
 	}
 	
 	public void playGame()
 	{
+		if(_players.size() == 0)
+		{
+			System.err.println("NO PLAYERS");
+			return;
+		}
+		
+		_playersRound = new CircularList<Player>(_players);
 		Iterator<Player> turnIterator = _playersRound.iterator();
 		while(!gameHasEnded)
 		{
 			Player playerAtTurn = turnIterator.next();
-			playerAtTurn.playRound();
+			Action playerAction = playerAtTurn.playRound();
+			
+			switch (playerAction) {
+			case SPLIT:
+				// only if two identical cards have been given
+				break;
+			case HIT:
+				// deal player a new card
+				break;
+			case STAND:
+				// hold your total and end your turn
+			default:
+				break;
+			}
 		}
 	}
 	

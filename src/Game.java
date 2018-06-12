@@ -16,9 +16,9 @@ public class Game {
 
 		TwentyOne _21 = new TwentyOne();
 		
-		_21.addPlayer(new Player("Gijs"));
-		_21.addPlayer(new Player("Sarah"));
-		_21.addPlayer(new Player("El jefe"));
+		_21.addPlayer(new PlayerCLI("Gijs"));
+		_21.addPlayer(new PlayerCLI("Sarah"));
+		_21.addPlayer(new PlayerCLI("El jefe"));
 		
 		_21.initialRounds();
 		

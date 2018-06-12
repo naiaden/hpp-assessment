@@ -10,14 +10,15 @@ import java.util.Iterator;
  *
  */
 public class CircularList<Type> implements Iterable<Type> {
-	private Type[] arrayList;
+	private ArrayList<Type> arrayList;
 	private int currentSize;
 	
-	public CircularList(Type[] newArray)
+	public CircularList(ArrayList<Type> newArray)
 	{
 		this.arrayList = newArray;
-		this.currentSize = arrayList.length;
+		this.currentSize = arrayList.size();
 	}
+	
 	
 	@Override
 	public Iterator<Type> iterator()
@@ -29,13 +30,13 @@ public class CircularList<Type> implements Iterable<Type> {
 			@Override
 			public boolean hasNext()
 			{
-				return arrayList[currentIndex%currentSize] != null;
+				return arrayList.get((currentIndex+1)%currentSize) != null;
 			}
 			
 			@Override
 			public Type next()
 			{
-				return arrayList[(currentIndex++)%currentSize];
+				return arrayList.get((currentIndex++)%currentSize);
 			}
 			
 			@Override
