@@ -11,6 +11,7 @@ public class TwentyOne {
 	private ArrayList<PlayerInfo> _playersInfo;
 	private CircularList<PlayerInfo> _playersRound;
 	private Deck _deck;
+	private PlayerInfo _bankInfo;
 	
 	private boolean gameHasEnded = false;
 	
@@ -34,6 +35,8 @@ public class TwentyOne {
 		
 		_playersInfo = new ArrayList<PlayerInfo>();
 		
+		_bankInfo = new PlayerInfo(new Bank("bank"));
+		
 		_deck = new Deck();
 		_deck.shuffle();
 		System.out.println("New deck shuffled with " + _deck.size() + " cards");
@@ -52,8 +55,9 @@ public class TwentyOne {
 		Iterator<PlayerInfo> turnIterator = _playersRound.iterator();
 		while(!gameHasEnded)
 		{
-			Player playerAtTurn = turnIterator.next().getPlayer();
-			Action playerAction = playerAtTurn.playRound();
+			PlayerInfo playerAtTurnInfo = turnIterator.next();
+			Player playerAtTurn = playerAtTurnInfo.getPlayer();
+			Action playerAction = playerAtTurn.playRound(playerAtTurnInfo.getScore());
 			
 			switch (playerAction) {
 			case SPLIT:
@@ -77,19 +81,33 @@ public class TwentyOne {
 			if(_playersRound.atBegin())
 			{
 				updateScores(acesCheck());
+				
+				gameHasEnded = checkAllBust();
+				if(gameHasEnded)
+				{
+					System.out.println("Bank has won");
+				}
 			}
 			
-			gameHasEnded = checkAllBust();
-			System.out.println("Bank has won");
+			if(_playersRound.atEnd())
+			{
+				_bankInfo.getPlayer().playRound(_bankInfo.getScore());
+				_bankInfo.setScore(TwentyOneScorer.Score(_bankInfo.getPlayer().getHand()));
+				System.out.println(_bankInfo.getPlayer()._name + ": " + _bankInfo.getScore());
+			}
 		}
 	}
+
 	
 	public boolean checkAllBust()
 	{
 		for(PlayerInfo playerInfo : _playersInfo)
 		{
 			if(!playerInfo.getBust())
+			{
 				return false;
+			}
+				
 		}
 		
 		return true;
@@ -103,7 +121,7 @@ public class TwentyOne {
 		if(aces == value)
 			return true;
 		
-		if(aces > 0 && value%aces == 0)
+		if(aces > 1 && value%aces == 0)
 			return true;
 		
 		if(value%10 == aces)

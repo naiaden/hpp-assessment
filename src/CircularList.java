@@ -20,6 +20,11 @@ public class CircularList<Type> implements Iterable<Type> {
 		return currentIndex%currentSize == 0;
 	}
 	
+	public boolean atEnd()
+	{
+		return (currentIndex+1)%currentSize == 1;
+	}
+	
 	public CircularList(ArrayList<Type> newArray)
 	{
 		this.arrayList = newArray;

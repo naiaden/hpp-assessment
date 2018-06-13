@@ -25,7 +25,7 @@ public class PlayerCLI extends Player
 	}
 
 	@Override
-	public Action playRound() {
+	public Action playRound(int score) {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		System.out.println(_name + ":: What will your next action be?");

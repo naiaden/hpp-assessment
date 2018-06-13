@@ -57,7 +57,7 @@ public abstract class Player implements PublicActionEventListener {
 		return aces;
 	}
 	
-	abstract public Action playRound();
+	abstract public Action playRound(int score);
 	
 	abstract public int placeBet();
 	
