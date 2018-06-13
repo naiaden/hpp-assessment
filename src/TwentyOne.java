@@ -207,6 +207,8 @@ public class TwentyOne {
 			playerInfo.getPlayer().addCardToHand(_deck.dealCard());
 		}
 		
+		_bankInfo.getPlayer().addCardToHand(_deck.dealCard());
+		
 		// players place their bet
 		for(PlayerInfo playerInfo : _playersInfo)
 		{
@@ -218,5 +220,7 @@ public class TwentyOne {
 		{
 			playerInfo.getPlayer().addCardToHand(_deck.dealCard());
 		}
+		
+		_bankInfo.getPlayer().addCardToHand(_deck.dealCard());
 	}
 }
