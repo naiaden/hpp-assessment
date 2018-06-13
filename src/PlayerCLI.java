@@ -57,10 +57,35 @@ public class PlayerCLI extends Player
 		
 	}
 
+	private PublicActionEventListener _paeListener = new PublicActionEventListener() {
+		
+		@Override
+		public void publicActionEventOccurred(PublicActionEvent pae) {
+			System.out.println(_name + " ACK for " + pae.toString());
+			
+		}
+	};
+
 	@Override
 	public void publicActionEventOccurred(PublicActionEvent pae) {
-		System.err.println("???);
+		//
 		
+	}
+
+	@Override
+	public int getAcesValue(int nrAces) {
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		System.out.println(_name + ":: What's the sum for your aces? You have " + nrAces + ".");
+		while(true)
+		{
+			try {
+				int i = Integer.parseInt(br.readLine());
+				return i;
+			} catch (NumberFormatException | IOException e) {
+				System.err.println("Cannot fetch/parse the input. Try again.");
+			}
+		}
 	}
 	
 

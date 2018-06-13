@@ -13,20 +13,24 @@ public class CircularList<Type> implements Iterable<Type> {
 	private ArrayList<Type> arrayList;
 	private int currentSize;
 	
+	protected int currentIndex = 0;
+	
+	public boolean atBegin()
+	{
+		return currentIndex%currentSize == 0;
+	}
+	
 	public CircularList(ArrayList<Type> newArray)
 	{
 		this.arrayList = newArray;
 		this.currentSize = arrayList.size();
 	}
 	
-	
 	@Override
 	public Iterator<Type> iterator()
 	{
 		Iterator<Type> it = new Iterator<Type>()
 		{
-			private int currentIndex = 0;
-			
 			@Override
 			public boolean hasNext()
 			{

@@ -13,13 +13,13 @@ public abstract class Player implements PublicActionEventListener {
 	public final String _name;
 	
 	private PublicActionEventListener _paeListener = new PublicActionEventListener() {
-	
-	@Override
-	public void publicActionEventOccurred(PublicActionEvent pae) {
-		System.out.println(_name + " ACK for " + pae.toString());
 		
-	}
-};
+		@Override
+		public void publicActionEventOccurred(PublicActionEvent pae) {
+			System.out.println("HALLO????");
+			
+		}
+	};
 	
 	public PublicActionEventListener getPublicActionEventListener()
 	{
@@ -38,8 +38,29 @@ public abstract class Player implements PublicActionEventListener {
 		_hand.add(card);
 	}
 	
+	public ArrayList<Card> getHand()
+	{
+		return _hand;
+	}
+	
+	public int hasAces()
+	{
+		int aces = 0;
+		for(Card card : _hand)
+		{
+			if(card.getValue() == Card.ACE)
+			{
+				aces++;
+			}
+		}
+		
+		return aces;
+	}
+	
 	abstract public Action playRound();
 	
 	abstract public int placeBet();
+	
+	abstract public int getAcesValue(int nrAces);
 	
 }
