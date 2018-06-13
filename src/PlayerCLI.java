@@ -57,20 +57,7 @@ public class PlayerCLI extends Player
 		
 	}
 
-	private PublicActionEventListener _paeListener = new PublicActionEventListener() {
-		
-		@Override
-		public void publicActionEventOccurred(PublicActionEvent pae) {
-			System.out.println(_name + " ACK for " + pae.toString());
-			
-		}
-	};
 
-	@Override
-	public void publicActionEventOccurred(PublicActionEvent pae) {
-		//
-		
-	}
 
 	@Override
 	public int getAcesValue(int nrAces) {
@@ -86,6 +73,12 @@ BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 				System.err.println("Cannot fetch/parse the input. Try again.");
 			}
 		}
+	}
+
+	@Override
+	public void publicActionEventOccurred(PublicActionEvent pae) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

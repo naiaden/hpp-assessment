@@ -16,7 +16,7 @@ public abstract class Player implements PublicActionEventListener {
 		
 		@Override
 		public void publicActionEventOccurred(PublicActionEvent pae) {
-			System.out.println("HALLO????");
+			System.out.println("Take a look at the table. Things have changed.");
 			
 		}
 	};
